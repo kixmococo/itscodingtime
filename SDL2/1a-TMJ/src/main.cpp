@@ -5,7 +5,7 @@ int main() {
 	bool running = true;
 
 	while (running) {
-		std::cout << "The journey starts here...";
+		std::cout << "The journey starts here...\n";
     }
 
     return 0;
