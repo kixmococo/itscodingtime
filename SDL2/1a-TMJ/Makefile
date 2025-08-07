@@ -1,9 +1,10 @@
 # i just spent like 15 minutes reading about CXX. i still dont know wtf it is
-CXX = g++
+CC = x86_64-w64-mingw32-g++
+COMPILER_FLAGS = -std=c++20 -Wall -O0 -g
 
 #this is supposed to show the errors
 #not working for some reason, told me to put a # at the end of c++, i put 03
-CXXFLAGS = -Wall -std=c++03
+
 
 #TODO , learn this;
 LDFLAGS = `sdl2-config --cflags --libs`
