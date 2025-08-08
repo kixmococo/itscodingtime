@@ -1,4 +1,3 @@
-# i just spent like 15 minutes reading about CXX. i still dont know wtf it is
 CC = x86_64-w64-mingw32-g++
 COMPILER_FLAGS = -std=c++20 -Wall -O0 -g
 
@@ -24,4 +23,4 @@ clean:
 #dude i put this in src/ and couldnt figure out wtf was going on
 #update; does not work , says cant run on this pc ... maybe a version error ? checking the mingw sht next
 #TODO learn linking
-~
+
