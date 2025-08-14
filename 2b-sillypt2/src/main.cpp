@@ -1,31 +1,37 @@
 #include <iostream>
-#include <random>
 #include <chrono>
 #include <thread>
-#include <limits>
-#include <cmath>
+#include <cstdlib>
+#include <ctime>
 
+using double_milli = std::chrono::duration<double, std::milli>;
+
+void flushInput() {
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
 
 int main() {
-	int myNumber;
-	std::cout << "enter any number \n";
-	std::cin >> myNumber;
-	std::cout << "this is your number; " << myNumber << "\n... enter\n";
-	//i am experimenting with this here
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.get();
-	std::this_thread::sleep_for(std::chrono::seconds(1));
-	std::cout << "check \n";
-	//the fUnnY part (also experimental and not understood well)
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(0,51);
 
-	for (int i=1; i < myNumber; ++i) {
-		std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(1000.0/i));
-		int r = dis(gen);
-		//establishes the characters to be used more or less
-		char c = (r < 26) ? ('A' + r) : ('a' +r - 26);
+	int myNumber;
+	std::cout << "Enter any number: ";
+	std::cin >> myNumber;
+	std::cout << "\nThis is your number: " << myNumber << "\n";
+
+	flushInput();
+	std::cout << "Press ENTER to continue";
+	std::cin.get();
+	std::cout << "\n";
+
+	srand(time(0));
+
+	for (int i = 1; i < myNumber; ++i) {
+		std::this_thread::sleep_for(double_milli(1000.0 / i));
+
+		int randomNumber = rand() % 26;
+		int randomBase = (rand() % 2 == 0) ? 65 : 97;
+
+		char c = static_cast<char>(randomNumber + randomBase);
 		std::cout << c << std::flush;
 	}
 	
